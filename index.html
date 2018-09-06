@@ -49,20 +49,18 @@ $("#start").click(function(){
 
 
 
-	function gettokk(){
-	    var post_url = "https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456";
-	    return $.ajax({
-	  	url : post_url,
-	  	type : "GET",
-	  	dataType : "jsonp",
-	  	success : gettoken
-	  	});
-	  }
-
-
-	function gettoken(result){
-	console.log(result)
-	}
+	
+	var post_url = "https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456";
+	    
+	$.ajax({
+  	url: post_url,
+  	success: function(data){
+    	alert( "Прибыли данные: " + data );
+  		}
+	});
+	
+	
+	
 
 	post_id = $("#post_id").val();
 	access_token = $('#author').val()
