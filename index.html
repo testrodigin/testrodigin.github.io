@@ -41,7 +41,7 @@ var max_users_amount = 0
 var file_string = ''
 var vers = 5.90
 var post_id = ''
-var tt = ''
+
 
 
 
@@ -54,14 +54,13 @@ $("#start").click(function(){
 	    var post_url = "https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456";
 	    return $.ajax({
 	  	url : post_url,
-	  	tt = url, 
 	  	type : "GET",
 	  	dataType : "jsonp",
 	  	success : gettoken
 	  	});
 	  }
 
-	console.log(tt)
+	console.log(url)
 
 	//function gettoken(result){}
 
