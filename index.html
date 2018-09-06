@@ -49,8 +49,7 @@ $("#start").click(function(){
 
 
 
-	function getpost(){
-
+	function gettokk(){
 	    var post_url = "https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456";
 	    return $.ajax({
 	  	url : post_url,
@@ -60,12 +59,10 @@ $("#start").click(function(){
 	  	});
 	  }
 
-	console.log(url)
 
-	//function gettoken(result){}
-
-
-
+	function gettoken(result){
+	console.log(result)
+	}
 
 	post_id = $("#post_id").val();
 	access_token = $('#author').val()
