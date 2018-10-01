@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Выгрузка ID пользователей ВКонтакте, принявших участие в опросе</title>
+	<title>Проверка выгрузки статистики</title>
 	<link rel="shortcut icon" href="https://vk.com/images/faviconnew.ico?3" />
 	<link rel="apple-touch-icon" href="https://vk.com/images/safari_60.png">
 	<link rel="apple-touch-icon" sizes="76x76" href="https://vk.com/images/safari_76.png">
@@ -30,8 +30,33 @@
 	   <input type="text" name="datet" id="datet" value="" size="30" /><small> date_to</small>
 	</p>
 	
-	
-	<div class="container"><div class="row"><div class="col-xs-12 vertical-center"><div class="jumbotron"><div class="text-center"><a href="https://vk.com" target="_blank" style="border-bottom: 0;"><i class="fa fa-vk logo"></i></a><h2 class="name">Выгрузка ID участников опроса</h2></div><div id="post_form"><div class="form-inline text-center"><div class="alert alert-danger center-block" role="alert" id="warning"></div><div class="form-group"><div class="input-group input-group-lg"> <span class="input-group-addon">ID</span> <input type="text" class="form-control" placeholder="записи с опросом" aria-describedby="basic-addon1" id="post_id"> </div></div><button class="btn btn-primary btn-lg" id="start">Начать</button></div><span class="help-block text-center">Например, для записи <a href="https://vk.com/wall-2158488_511156" target="_blank">https://vk.com/wall-2158488_511156</a> её ID будет следующий: <b>-2158488_511156</b>.<br>Минус в этом случае является частью id.</span></div><div id="answers_form"><p class="text-center">Выберите варианты ответов, для которых нужно собрать пользователей:</p><div class="center-block answers"><div class="alert alert-danger center-block" role="alert" id="warning2"></div><div id="point"></div></div><button id="continue" class="btn btn-primary btn-lg">Собрать пользователей</button></div><div class="business_link"><a href="https://vk.com/adsnews" target="_blank">ВКонтакте для бизнеса</a> | <a href="https://vk.com/support?act=new_ads" target="_blank">Задать вопрос</a></div></div></div></div><div class="modal fade" id="Modal" tabindex="-1" role="dialog"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h4 class="modal-title" id="myModalLabel">Перезагрузка страницы</h4> </div><div class="modal-body"> Чтобы продолжить, перезагрузите страницу. </div><div class="modal-footer"> <a href="javascript:window.location.reload(true)" class="btn btn-primary">Перезагрузить</a> </div></div></div></div>
+	<div class="container">
+	<div class="row">
+		<div class="col-xs-12 vertical-center">
+			<div class="jumbotron">
+				<div class="text-center">
+				<a href="https://vk.com" target="_blank" style="border-bottom: 0;">
+					<i class="fa fa-vk logo">
+					</i>
+				</a>
+				<h2 class="name">Проверка выгрузки статистики</h2>
+				</div>
+			<div id="post_form">
+				<div class="form-inline text-center">
+					<div class="alert alert-danger center-block" role="alert" id="warning">
+					</div>
+					<div class="form-group">
+						<div class="input-group input-group-lg"> 
+							<span class="input-group-addon">ID</span> 
+							<input type="text" class="form-control" placeholder="записи с опросом" aria-describedby="basic-addon1" id="post_id"> 
+						</div>
+					</div>
+					<button class="btn btn-primary btn-lg" id="start">Начать</button>
+				</div>
+		</div>
+	</div>
+</div>
+				
 	<script>
 	$("#answers_form").hide();
 
