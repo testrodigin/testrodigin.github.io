@@ -54,7 +54,7 @@ $("#start").click(function(){
 	access_token = $('#author').val()
 	console.log(access_token)
   function getpost(postid){
-	var post_url = "https://api.vk.com/method/ads.getStatistics?account_id="+accid+"&ids_type=campaign&ids="+adid+"&period=overall&date_from=0&date_to=0&v=5.85;
+	var post_url = "https://api.vk.com/method/ads.getStatistics?account_id="+accid+"&ids_type=campaign&ids="+adid+"&period=overall&date_from=0&date_to=0&access_token="+access_token+"&v=5.85";
     return $.ajax({
   	url : post_url,
   	type : "GET",
