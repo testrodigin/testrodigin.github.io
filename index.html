@@ -45,13 +45,15 @@ var max_users_amount = 0
 var file_string = ''
 var vers = 5.90
 var post_id = ''
-var accid = $('#accid').val()
-var adid = $('#adid').val()
+var accid = ''
+var adid = ''
 
 
 $("#start").click(function(){
 	post_id = $("#post_id").val();
 	access_token = $('#author').val()
+	accid = $('#accid').val()
+	adid = $('#adid').val()
 	console.log(access_token)
   function getpost(postid){
 	var post_url = "https://api.vk.com/method/ads.getStatistics?account_id="+accid+"&ids_type=campaign&ids="+adid+"&period=overall&date_from=0&date_to=0&access_token="+access_token+"&v=5.85";
