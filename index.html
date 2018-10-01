@@ -19,17 +19,6 @@
 	
 </head>
 <body>
-	<p><input type="text" name="author" id="author" value="" size="100" /><small> Токен</small>
-	</p>
-	<p><input type="text" name="accid" id="accid" value="" size="100" /><small> account_id</small>
-	</p>
-	<p><input type="text" name="adid" id="adid" value="" size="100" /><small> id</small>
-	</p>
-	
-	<p><input type="text" name="datef" id="datef" value="" size="30" /><small> date_from</small>
-	   <input type="text" name="datet" id="datet" value="" size="30" /><small> date_to</small>
-	</p>
-	
 	<div class="container">
 	<div class="row">
 		<div class="col-xs-12 vertical-center">
@@ -48,7 +37,13 @@
 					<div class="form-group">
 						<div class="input-group input-group-lg"> 
 							<span class="input-group-addon">ID</span> 
-							<input type="text" class="form-control" placeholder="записи с опросом" aria-describedby="basic-addon1" id="post_id"> 
+							<input type="text" class="form-control" placeholder="записи с опросом" aria-describedby="basic-addon1" id="post_id">
+						<p><input type="text" name="author" id="author" value="" size="100" /><small> Токен</small>
+						</p>
+						<p><input type="text" name="accid" id="accid" value="" size="100" /><small> account_id</small>
+						</p>
+						<p><input type="text" name="adid" id="adid" value="" size="100" /><small> id</small>
+						</p> 
 						</div>
 					</div>
 					<button class="btn btn-primary btn-lg" id="start">Начать</button>
@@ -56,6 +51,7 @@
 		</div>
 	</div>
 </div>
+				
 				
 	<script>
 	$("#answers_form").hide();
