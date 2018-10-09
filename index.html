@@ -50,16 +50,19 @@ $("#start").click(function(){
 	  	url : post_url,
 	  	type : "GET",
 	  	dataType : "jsonp",
-	  	success : gettokencompleted
+	  	//success : gettokencompleted
+		success : function(data, status, xhr) {
+        console.log(xhr.getResponseHeader('Location'));
+
 	  	});
 	  }
-
+	 /*
 	function gettokencompleted(result){
-		console.log(result)
+		console.log(result.)
     }
+    */
     gettoken();
-
-
+	
 
 
 
