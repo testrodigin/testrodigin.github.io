@@ -43,7 +43,7 @@ $("#start").click(function(){
 	post_id = $("#post_id").val();
 	access_token = $('#author').val()
 	console.log(access_token)
-/*
+
 	function gettoken(){
 	var post_url = "https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456";
 	    return $.ajax({
@@ -51,35 +51,11 @@ $("#start").click(function(){
 	  	type : "GET",
 	  	dataType : "jsonp",
 	  	success : function(data, status, xhr) {
-        console.log(xhr.getResponseHeader('Location'));
-    	}
-
-
-	  	});
-	  }
-	  
-	function gettokencompleted(result){
-		console.log(result)
-    }
-    
+        		console.log(xhr.getResponseHeader('Location'));
+    			}
+	    });
+	}
     gettoken();
-*/
-
-var xhr;
-var _orgAjax = jQuery.ajaxSettings.xhr;
-jQuery.ajaxSettings.xhr = function () {
-  xhr = _orgAjax();
-  return xhr;
-};
-
-$.ajax({
-    type: "GET",
-    url: 'https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456',
-    success: function(data) {
-	console.log("Чё не так та? ");    
-        console.log(xhr.responseURL);
-    }
-});
 
 
 
