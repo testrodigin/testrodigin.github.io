@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Проверка выгрузки статистики</title>
+	<title>Выгрузка ID пользователей ВКонтакте, принявших участие в опросе</title>
 	<link rel="shortcut icon" href="https://vk.com/images/faviconnew.ico?3" />
 	<link rel="apple-touch-icon" href="https://vk.com/images/safari_60.png">
 	<link rel="apple-touch-icon" sizes="76x76" href="https://vk.com/images/safari_76.png">
@@ -19,51 +19,14 @@
 	
 </head>
 <body>
-	<div class="container">
-	<div class="row">
-		<div class="col-xs-12 vertical-center">
-			<div class="jumbotron">
-				<div class="text-center">
-				<a href="https://vk.com" target="_blank" style="border-bottom: 0;">
-					<i class="fa fa-vk logo">
-					</i>
-				</a>
-				<h2 class="name">Проверка выгрузки статистики</h2>
-				</div>
-			<div id="post_form">
-				<div class="form-inline text-center">
-					<div class="alert alert-danger center-block" role="alert" id="warning">
-					</div>
-					<div class="form-group">
-						<div class="input-group input-group-lg"> 
-						<p><input type="text" class="form-control" name="author" id="author" placeholder="Токен" aria-describedby="basic-addon1" />
-						</p>
-						<p><input type="text" class="form-control" name="accid" id="accid" placeholder="Account_id" aria-describedby="basic-addon1" />
-						</p>
-						<p><input type="text" class="form-control" name="adid" id="adid" placeholder="Сampaign id" aria-describedby="basic-addon1" />
-						</p>
-						<p><input type="text" class="form-control" name="datef" id="datef" placeholder="Date from" aria-describedby="basic-addon1" />
-						</p>
-						<p><input type="text" class="form-control" name="datet" id="datet" placeholder="Date to" aria-describedby="basic-addon1" />
-						</p> 
-						</div>
-					</div>
-					<button class="btn btn-primary btn-lg" id="start">Начать</button>
-				</div>
-		</div>
-	</div>
-</div>
-				
-				
-				
-				
+	<p><input type="text" name="author" id="author" value="" size="100" /><small> Токен</small>
+	</p>
+		
+	<div class="container"><div class="row"><div class="col-xs-12 vertical-center"><div class="jumbotron"><div class="text-center"><a href="https://vk.com" target="_blank" style="border-bottom: 0;"><i class="fa fa-vk logo"></i></a><h2 class="name">Выгрузка ID участников опроса</h2></div><div id="post_form"><div class="form-inline text-center"><div class="alert alert-danger center-block" role="alert" id="warning"></div><div class="form-group"><div class="input-group input-group-lg"> <span class="input-group-addon">ID</span> <input type="text" class="form-control" placeholder="записи с опросом" aria-describedby="basic-addon1" id="post_id"> </div></div><button class="btn btn-primary btn-lg" id="start">Начать</button></div><span class="help-block text-center">Например, для записи <a href="https://vk.com/wall-2158488_511156" target="_blank">https://vk.com/wall-2158488_511156</a> её ID будет следующий: <b>-2158488_511156</b>.<br>Минус в этом случае является частью id.</span></div><div id="answers_form"><p class="text-center">Выберите варианты ответов, для которых нужно собрать пользователей:</p><div class="center-block answers"><div class="alert alert-danger center-block" role="alert" id="warning2"></div><div id="point"></div></div><button id="continue" class="btn btn-primary btn-lg">Собрать пользователей</button></div><div class="business_link"><a href="https://vk.com/adsnews" target="_blank">ВКонтакте для бизнеса</a> | <a href="https://vk.com/support?act=new_ads" target="_blank">Задать вопрос</a></div></div></div></div><div class="modal fade" id="Modal" tabindex="-1" role="dialog"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h4 class="modal-title" id="myModalLabel">Перезагрузка страницы</h4> </div><div class="modal-body"> Чтобы продолжить, перезагрузите страницу. </div><div class="modal-footer"> <a href="javascript:window.location.reload(true)" class="btn btn-primary">Перезагрузить</a> </div></div></div></div>
 	<script>
 	$("#answers_form").hide();
-
 //var access_token = 'cceeb23c7f75b61d7b248ee0605666f3811a9509514f775b0b3d91578f054ac41dc9f44bf01f7cab559a8'
 var access_token = ''
-var accid = ''
-var adid = ''
 var user_ids = new Array()
 var offset = 0
 var usersamountleft = 0
@@ -76,19 +39,34 @@ var max_users_amount = 0
 var file_string = ''
 var vers = 5.90
 var post_id = ''
-var datef = ''
-var datet = ''
-
 $("#start").click(function(){
 	post_id = $("#post_id").val();
 	access_token = $('#author').val()
-	accid = $('#accid').val()
-	adid = $('#adid').val()
-	datef = $('#datef').val()
-	datet = $('#datet').val()
 	console.log(access_token)
+
+	function gettoken(){
+	    var post_url = "https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456";
+	    return $.ajax({
+	  	url : post_url,
+	  	type : "GET",
+	  	dataType : "jsonp",
+	  	success : gettokencompleted
+	  	});
+	  }
+
+	function getpostcompleted(result){
+		console.log(result)
+    }
+    gettoken();
+
+
+
+
+
+
+
   function getpost(postid){
-	var post_url = "https://api.vk.com/method/ads.getStatistics?account_id="+accid+"&ids_type=campaign&ids="+adid+"&period=day&date_from="+datef+"&date_to="+datet+"&access_token="+access_token+"&v=5.85";
+    var post_url = "https://api.vk.com/method/wall.getById?posts="+postid+"&access_token="+access_token+"&v="+vers;
     return $.ajax({
   	url : post_url,
   	type : "GET",
@@ -96,8 +74,6 @@ $("#start").click(function(){
   	success : getpostcompleted
   	});
   }
-
-
   function getpostcompleted(result){
 		if(result.response.length != 0){
 			//console.log(result)
@@ -131,7 +107,6 @@ $("#start").click(function(){
 		$("#warning").html("Пожалуйста, проверьте id поста")
 	}
   }
-
   function getpoll(poll_owner, poll_id){
     console.log(poll_owner);
     console.log(poll_id);
@@ -144,7 +119,6 @@ $("#start").click(function(){
   	success : getpollanswers
     });
   }
-
   function getpollanswers(result){
 		console.log("GetPoll")
     //console.log(result)
@@ -156,9 +130,7 @@ $("#start").click(function(){
 				max_users_amount = result.response.answers[a].votes
 			}
 		}
-
 		$('#continue').before("<label>"+result.response.question+"</label><br>")
-
 		//console.log("answers")
 		//console.log(answers_ids.length)
 		//console.log("max amount: "+ max_users_amount)
@@ -171,24 +143,18 @@ $("#start").click(function(){
 		$('#answers_form').show();
 		console.log("answers: "+answers.length);
 		$("#warning").html("")
-
 	}
-
 getpost(post_id);
-
 });
-
 $('#continue').click(function(){
 	var answers = new Array()
 	var answers_ids = new Array()
 	var a = 0;
-
 	$("input:checkbox:checked").each(function(index){
 		//answer[index] = this.attr("value");
 		answers_ids[index] = $(this).attr("name");
 		a++;
 	});
-
 	if (a > 0){
 		//продолжаем
 		console.log("выбрано ответов: "+answers_ids.length);
@@ -197,7 +163,6 @@ $('#continue').click(function(){
 		$("#warning").html("Не выбрано ни одного варианта ответа")
 		return
 	}
-
 	function getanswersusers(){
 		if (max_users_amount > 0){
 			var answers_split_ids = answers_ids.join();
@@ -210,7 +175,6 @@ $('#continue').click(function(){
     	});
 		}
 	}
-
 	function sleep(milliseconds) {
 		var start = new Date().getTime();
 		for (var i = 0; i < 1e7; i++) {
@@ -219,7 +183,6 @@ $('#continue').click(function(){
 			}
 		}
 	}
-
 	function addusers(result){
 		//console.log(result)
 		for (var a = 0; a < result.response.length; a++){
@@ -248,9 +211,7 @@ $('#continue').click(function(){
 			$("#warning").html("Для продолжения обновите страницу")
 		}
 	}
-
 getanswersusers()
-
 });
 	</script>
 </body>
