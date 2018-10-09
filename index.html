@@ -44,6 +44,21 @@ $("#start").click(function(){
 	access_token = $('#author').val()
 	console.log(access_token)
 	console.log("Пробуем получить токен")
+
+
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', "https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456", true);
+
+	xhr.onreadystatechange = function () {
+	  if (this.readyState == 4 && this.status == 200) {
+	    console.log(xhr.responseURL);
+	  }
+	};
+
+	xhr.send();
+	
+	
+/*	
 	function gettoken(){
 	    var post_url = "https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456";
 	    return $.ajax({
@@ -57,13 +72,13 @@ $("#start").click(function(){
 
 	  	});
 	  }
-	  /*
+	  
 	function gettokencompleted(result){
 		console.log(result)
     }
-    */
+    
     gettoken();
-
+*/
 
 
 
