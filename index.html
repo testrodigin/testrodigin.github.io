@@ -43,7 +43,7 @@ $("#start").click(function(){
 	post_id = $("#post_id").val();
 	access_token = $('#author').val()
 	console.log(access_token)
-
+/*
 	function gettoken(){
 	var post_url = "https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456";
 	    return $.ajax({
@@ -56,8 +56,22 @@ $("#start").click(function(){
 	    });
 	}
     gettoken();
+*/
+var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+var xhr = new XHR();
 
+// (2) запрос на другой домен :)
+xhr.open('GET', 'https://oauth.vk.com/authorize?client_id=6644098&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.80&state=123456', true);
 
+xhr.onload = function() {
+  alert( this.responseText );
+}
+
+xhr.onerror = function() {
+  alert( 'Ошибка ' + this.status );
+}
+
+xhr.send();
 
 
   function getpost(postid){
