@@ -1,44 +1,32 @@
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Выгрузка ID пользователей ВКонтакте, принявших участие в опросе</title>
-    <link rel="shortcut icon" href="https://vk.com/images/faviconnew.ico?3" />
-    <link rel="apple-touch-icon" href="https://vk.com/images/safari_60.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://vk.com/images/safari_76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://vk.com/images/safari_120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://vk.com/images/safari_152.png">
-    <link rel="stylesheet" type="text/css" href="https://yastatic.net/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <style type="text/css">
-        .input-group{margin-right:15px;}body{font-family:'Open Sans',Tahoma,Arial,Helvetica,sans-serif}.jumbotron{width:100%!important}.help-block{margin-top:20px}.vertical-center{min-height:100%;min-height:100vh;display:flex;align-items:center}@media (min-width:768px){.form-inline .input-group>.form-control{min-width:550px;max-width:auto}#warning{text-align:left;width:710px}}#warning,#warning2{display:none}.business_link{display:block;margin-top:50px;text-align:center}.logo{font-size:50px;color:#597DA3;margin-bottom:20px}.answer{font-weight:400}.btn-primary,h2{font-weight:300}#continue{display:block;margin:30px auto 0}.poll_name{margin-top:0;margin-bottom:15px}.name{margin-top:5px}#post_form,.answers{margin-top:25px}.answers{background:#fff;border-radius:15px;padding:25px}@media (min-width:992px){.answers{padding:45px 150px}}.btn-primary{background-color:#597DA3;border-color:#597DA3}.btn-primary.active,.btn-primary.focus,.btn-primary:active,.btn-primary:focus,.btn-primary:hover,.open>.dropdown-toggle.btn-primary{color:#fff;background-color:#4B6D94;border-color:#4B6D94}a,a:focus,a:hover{color:#597DA3;text-decoration:none}a{border-bottom:1px solid transparent;transition:border-bottom-color .3s}a:focus,a:hover{border-bottom-color:#597DA3}button:focus{outline:0!important}#point{display:none}.modal-dialog,.modal:before{display:inline-block;vertical-align:middle}.jumbotron p{font-weight:400}.modal{text-align:center;padding:0!important}.modal:before{content:'';height:100%;margin-right:-4px}.modal-dialog{text-align:left}.modal-body{padding-top:20px;padding-bottom:20px}.container .jumbotron,.container-fluid .jumbotron{border-radius:30px}.jumbotron{background-color:#F0F2F5}.modal-header{background:#F2F4F7}.modal-content{border-radius:0;box-shadow:none;-webkit-box-shadow:none}@media (max-width:992px){#start{margin-top:15px;width:100%;}#warning{width:100%}}
-    </style>
-    <script src="https://yastatic.net/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://yastatic.net/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Выгрузка ID пользователей ВКонтакте, принявших участие в опросе</title>
+	<link rel="shortcut icon" href="https://vk.com/images/faviconnew.ico?3" />
+	<link rel="apple-touch-icon" href="https://vk.com/images/safari_60.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://vk.com/images/safari_76.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://vk.com/images/safari_120.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://vk.com/images/safari_152.png">
+	<link rel="stylesheet" type="text/css" href="https://yastatic.net/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<style type="text/css">
+		.input-group{margin-right:15px;}body{font-family:'Open Sans',Tahoma,Arial,Helvetica,sans-serif}.jumbotron{width:100%!important}.help-block{margin-top:20px}.vertical-center{min-height:100%;min-height:100vh;display:flex;align-items:center}@media (min-width:768px){.form-inline .input-group>.form-control{min-width:550px;max-width:auto}#warning{text-align:left;width:710px}}#warning,#warning2{display:none}.business_link{display:block;margin-top:50px;text-align:center}.logo{font-size:50px;color:#597DA3;margin-bottom:20px}.answer{font-weight:400}.btn-primary,h2{font-weight:300}#continue{display:block;margin:30px auto 0}.poll_name{margin-top:0;margin-bottom:15px}.name{margin-top:5px}#post_form,.answers{margin-top:25px}.answers{background:#fff;border-radius:15px;padding:25px}@media (min-width:992px){.answers{padding:45px 150px}}.btn-primary{background-color:#597DA3;border-color:#597DA3}.btn-primary.active,.btn-primary.focus,.btn-primary:active,.btn-primary:focus,.btn-primary:hover,.open>.dropdown-toggle.btn-primary{color:#fff;background-color:#4B6D94;border-color:#4B6D94}a,a:focus,a:hover{color:#597DA3;text-decoration:none}a{border-bottom:1px solid transparent;transition:border-bottom-color .3s}a:focus,a:hover{border-bottom-color:#597DA3}button:focus{outline:0!important}#point{display:none}.modal-dialog,.modal:before{display:inline-block;vertical-align:middle}.jumbotron p{font-weight:400}.modal{text-align:center;padding:0!important}.modal:before{content:'';height:100%;margin-right:-4px}.modal-dialog{text-align:left}.modal-body{padding-top:20px;padding-bottom:20px}.container .jumbotron,.container-fluid .jumbotron{border-radius:30px}.jumbotron{background-color:#F0F2F5}.modal-header{background:#F2F4F7}.modal-content{border-radius:0;box-shadow:none;-webkit-box-shadow:none}@media (max-width:992px){#start{margin-top:15px;width:100%;}#warning{width:100%}}
+	</style>
+	<script src="https://yastatic.net/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://yastatic.net/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js" type="text/javascript"></script>
+	
 </head>
 <body>
-    <p><input type="text" name="author" id="author" value="" size="100" /><small> Токен</small>
-    </p>
-        
-    <div class="container"><div class="row"><div class="col-xs-12 vertical-center"><div class="jumbotron"><div class="text-center"><a href="https://vk.com" target="_blank" style="border-bottom: 0;"><i class="fa fa-vk logo"></i></a><h2 class="name">Выгрузка ID участников опроса</h2></div><div id="post_form"><div class="form-inline text-center"><div class="alert alert-danger center-block" role="alert" id="warning"></div><div class="form-group"><div class="input-group input-group-lg"> <span class="input-group-addon">ID</span> <input type="text" class="form-control" placeholder="записи с опросом" aria-describedby="basic-addon1" id="post_id"> </div></div><button class="btn btn-primary btn-lg" id="start">Начать</button></div><span class="help-block text-center">Например, для записи <a href="https://vk.com/wall-2158488_511156" target="_blank">https://vk.com/wall-2158488_511156</a> её ID будет следующий: <b>-2158488_511156</b>.<br>Минус в этом случае является частью id.</span></div><div id="answers_form"><p class="text-center">Выберите варианты ответов, для которых нужно собрать пользователей:</p><div class="center-block answers"><div class="alert alert-danger center-block" role="alert" id="warning2"></div><div id="point"></div></div><button id="continue" class="btn btn-primary btn-lg">Собрать пользователей</button></div><div class="business_link"><a href="https://vk.com/adsnews" target="_blank">ВКонтакте для бизнеса</a> | <a href="https://vk.com/support?act=new_ads" target="_blank">Задать вопрос</a></div></div></div></div><div class="modal fade" id="Modal" tabindex="-1" role="dialog"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h4 class="modal-title" id="myModalLabel">Перезагрузка страницы</h4> </div><div class="modal-body"> Чтобы продолжить, перезагрузите страницу. </div><div class="modal-footer"> <a href="javascript:window.location.reload(true)" class="btn btn-primary">Перезагрузить</a> </div></div></div></div>
-    
-<script type="text/javascript">
-  VK.init({apiId: 6737585});
-</script>
-
-<!-- VK Widget -->
-<div id="vk_auth"></div>
-<script type="text/javascript">
-  VK.Widgets.Auth("vk_auth", {"width":400,"onAuth":"function(data) {alert('user '+data['uid']+' authorized');}"});
-</script>
-        
-        
-        
-        
-    <script>
-    $("#answers_form").hide();
+	<p><input type="text" name="author" id="author" value="7f668efc20be1d359e29dbe1c316a77f8b9566eb26a1a6c46302207b418b9cf768bf1770e6b851a6adeda" size="100" /><small> Токен</small>
+	</p>
+		
+	<div class="container"><div class="row"><div class="col-xs-12 vertical-center"><div class="jumbotron"><div class="text-center"><a href="https://vk.com" target="_blank" style="border-bottom: 0;"><i class="fa fa-vk logo"></i></a><h2 class="name">Выгрузка ID участников опроса</h2></div><div id="post_form"><div class="form-inline text-center"><div class="alert alert-danger center-block" role="alert" id="warning"></div><div class="form-group"><div class="input-group input-group-lg"> <span class="input-group-addon">ID</span> <input type="text" class="form-control" placeholder="записи с опросом" aria-describedby="basic-addon1" id="post_id"> </div></div><button class="btn btn-primary btn-lg" id="start">Начать</button></div><span class="help-block text-center">Например, для записи <a href="https://vk.com/wall-2158488_511156" target="_blank">https://vk.com/wall-2158488_511156</a> её ID будет следующий: <b>-2158488_511156</b>.<br>Минус в этом случае является частью id.</span></div><div id="answers_form"><p class="text-center">Выберите варианты ответов, для которых нужно собрать пользователей:</p><div class="center-block answers"><div class="alert alert-danger center-block" role="alert" id="warning2"></div><div id="point"></div></div><button id="continue" class="btn btn-primary btn-lg">Собрать пользователей</button></div><div class="business_link"><a href="https://vk.com/adsnews" target="_blank">ВКонтакте для бизнеса</a> | <a href="https://vk.com/support?act=new_ads" target="_blank">Задать вопрос</a></div></div></div></div><div class="modal fade" id="Modal" tabindex="-1" role="dialog"> <div class="modal-dialog" role="document"> <div class="modal-content"> <div class="modal-header"> <h4 class="modal-title" id="myModalLabel">Перезагрузка страницы</h4> </div><div class="modal-body"> Чтобы продолжить, перезагрузите страницу. </div><div class="modal-footer"> <a href="javascript:window.location.reload(true)" class="btn btn-primary">Перезагрузить</a> </div></div></div></div>
+	<script>
+	$("#answers_form").hide();
+//var access_token = 'cceeb23c7f75b61d7b248ee0605666f3811a9509514f775b0b3d91578f054ac41dc9f44bf01f7cab559a8'
+//7f668efc20be1d359e29dbe1c316a77f8b9566eb26a1a6c46302207b418b9cf768bf1770e6b851a6adeda
 var access_token = ''
 var user_ids = new Array()
 var offset = 0
@@ -53,134 +41,151 @@ var file_string = ''
 var vers = 5.90
 var post_id = ''
 $("#start").click(function(){
-    post_id = $("#post_id").val();
-    access_token = $('#author').val()
-    console.log(access_token)
-VK.Api.call('wall.getById', {posts : post_id, v:"5.90"}, function getpostcompleted(result){
-        if(result.response.length != 0){
-            //console.log(result)
+	post_id = $("#post_id").val();
+	access_token = $('#author').val()
+	console.log(access_token)
+  function getpost(postid){
+    
+    VK.Api.call('wall.getById', {posts : postid, v:"5.90"}, function getpostcompleted(result));
+  }
+
+  function getpostcompleted(result){
+		if(result.response.length != 0){
+			//console.log(result)
     if (result.response[0].attachments.length != 0){
       for (var a = 0; a < result.response[0].attachments.length; a++){
         if (result.response[0].attachments[a].type == "poll"){
           var poll_object_id = a;
-                    var ispoll = 1;
-                    console.log("GetPost")
+					var ispoll = 1;
+					console.log("GetPost")
           console.log(result.response[0])
-                    console.log(poll_object_id)
+					console.log(poll_object_id)
           break;
         }
       }
       if (!ispoll){
         console.log("В посте нет опроса");
-                console.log(result.response[0].attachments[0].type)
-                $("#warning").html("В посте нет опроса, проверьте id")
-                return
+				console.log(result.response[0].attachments[0].type)
+				$("#warning").html("В посте нет опроса, проверьте id")
+				return
       } else {
-                //poll_owner = result.response[0].from_id
-                poll_owner = result.response[0].attachments[poll_object_id].poll.owner_id
-                poll_id = result.response[0].attachments[poll_object_id].poll.id
+				//poll_owner = result.response[0].from_id
+				poll_owner = result.response[0].attachments[poll_object_id].poll.owner_id
+				poll_id = result.response[0].attachments[poll_object_id].poll.id
         getpoll(poll_owner,poll_id)
       }
     } else {
       console.log("Нет вложений");
-            $("#warning").html("Пожалуйста, проверьте id поста")
+			$("#warning").html("Пожалуйста, проверьте id поста")
     }
-    } else {
-        console.log(result)
-        $("#warning").html("Пожалуйста, проверьте id поста")
-    }
-});
+	} else {
+		console.log(result)
+		$("#warning").html("Пожалуйста, проверьте id поста")
+	}
+  }
+  function getpoll(poll_owner, poll_id){
+    console.log(poll_owner);
+    console.log(poll_id);
+    console.log(access_token);
+    
 
+    VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id  v:"5.90"}, function getpollanswers(result));
 
-VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id,  v:"5.90"}, function getpollanswers(result){
-        console.log("GetPoll")
+  }
+  function getpollanswers(result){
+		console.log("GetPoll")
     //console.log(result)
-        poll_text = result.response.question;
-        for (var a = 0; a < result.response.answers.length; a++){
-            answers[a] = result.response.answers[a]
-            answers_ids[a] = result.response.answers[a].id
-            if (result.response.answers[a].votes > max_users_amount){
-                max_users_amount = result.response.answers[a].votes
-            }
-        }
-        $('#continue').before("<label>"+result.response.question+"</label><br>")
-        //console.log("answers")
-        //console.log(answers_ids.length)
-        //console.log("max amount: "+ max_users_amount)
-        //
-        for (var a = 0; a < result.response.answers.length; a++){
-            console.log("add answer");
-            $('#continue').before("<input type='checkbox' id = 'answer' name='"+answers_ids[a]+"'> "+result.response.answers[a].text+" ("+result.response.answers[a].rate+"%, "+result.response.answers[a].votes+")<br>");
-        }
-        $('#post_form').hide();
-        $('#answers_form').show();
-        console.log("answers: "+answers.length);
-        $("#warning").html("")
-    });
-
+		poll_text = result.response.question;
+		for (var a = 0; a < result.response.answers.length; a++){
+			answers[a] = result.response.answers[a]
+			answers_ids[a] = result.response.answers[a].id
+			if (result.response.answers[a].votes > max_users_amount){
+				max_users_amount = result.response.answers[a].votes
+			}
+		}
+		$('#continue').before("<label>"+result.response.question+"</label><br>")
+		//console.log("answers")
+		//console.log(answers_ids.length)
+		//console.log("max amount: "+ max_users_amount)
+		//
+		for (var a = 0; a < result.response.answers.length; a++){
+			console.log("add answer");
+			$('#continue').before("<input type='checkbox' id = 'answer' name='"+answers_ids[a]+"'> "+result.response.answers[a].text+" ("+result.response.answers[a].rate+"%, "+result.response.answers[a].votes+")<br>");
+		}
+		$('#post_form').hide();
+		$('#answers_form').show();
+		console.log("answers: "+answers.length);
+		$("#warning").html("")
+	}
 getpost(post_id);
 });
 $('#continue').click(function(){
-    var answers = new Array()
-    var answers_ids = new Array()
-    var a = 0;
-    $("input:checkbox:checked").each(function(index){
-        //answer[index] = this.attr("value");
-        answers_ids[index] = $(this).attr("name");
-        a++;
-    });
-    if (a > 0){
-        //продолжаем
-        console.log("выбрано ответов: "+answers_ids.length);
-    } else {
-        console.log("ничего не выбрано");
-        $("#warning").html("Не выбрано ни одного варианта ответа")
-        return
-    }
-    function getanswersusers(){
-        if (max_users_amount > 0){
-            var answers_split_ids = answers_ids.join();
-            VK.Api.call('polls.getVoters', {owner_id : poll_owner, poll_id : poll_id, count:1000, offset : offset, answer_ids : answers_split_ids, v:"5.90"}, addusers(result));
-        }
-    }
-    function sleep(milliseconds) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > milliseconds){
-                break;
-            }
-        }
-    }
-    function addusers(result){
-        //console.log(result)
-        for (var a = 0; a < result.response.length; a++){
-            if (!user_ids[a]){
-                user_ids[a] = new Array()
-            }
-            for (var b = 0; b < result.response[a].users.items.length; b++){
-                user_ids[a].push(result.response[a].users.items[b])
-            }
-        }
-        offset += 1000
-        max_users_amount -= 1000
-        if (max_users_amount > 0){
-            sleep(500)
-            getanswersusers()
-        } else {
-            console.log("Собрано "+user_ids.length)
-            console.log(user_ids[0])
-            for (var a = 0; a < user_ids.length; a++){
-                file_string += user_ids[a].join(";")
-                    //console.log(a);
-                }
-            var file = new Blob([file_string],{type: "text/plain;charset=utf-8"});
-            var filename = "Список проголосовавших (" + post_id  + ").txt";
-            saveAs(file, filename);
-            $("#warning").html("Для продолжения обновите страницу")
-        }
-    }
+	var answers = new Array()
+	var answers_ids = new Array()
+	var a = 0;
+	$("input:checkbox:checked").each(function(index){
+		//answer[index] = this.attr("value");
+		answers_ids[index] = $(this).attr("name");
+		a++;
+	});
+	if (a > 0){
+		//продолжаем
+		console.log("выбрано ответов: "+answers_ids.length);
+	} else {
+		console.log("ничего не выбрано");
+		$("#warning").html("Не выбрано ни одного варианта ответа")
+		return
+	}
+	function getanswersusers(){
+		if (max_users_amount > 0){
+			var answers_split_ids = answers_ids.join();
+			
+
+			VK.Api.call('polls.getVoters', {owner_id : poll_owner, poll_id : poll_id, count:1000, offset : offset, answer_ids : answers_split_ids, v:"5.90"}, addusers(result));
+
+
+
+
+		}
+	}
+	function sleep(milliseconds) {
+		var start = new Date().getTime();
+		for (var i = 0; i < 1e7; i++) {
+			if ((new Date().getTime() - start) > milliseconds){
+				break;
+			}
+		}
+	}
+	function addusers(result){
+		//console.log(result)
+		for (var a = 0; a < result.response.length; a++){
+			if (!user_ids[a]){
+				user_ids[a] = new Array()
+			}
+			for (var b = 0; b < result.response[a].users.items.length; b++){
+				user_ids[a].push(result.response[a].users.items[b])
+			}
+		}
+		offset += 1000
+		max_users_amount -= 1000
+		if (max_users_amount > 0){
+			sleep(500)
+			getanswersusers()
+		} else {
+			console.log("Собрано "+user_ids.length)
+			console.log(user_ids[0])
+			for (var a = 0; a < user_ids.length; a++){
+				file_string += user_ids[a].join(";")
+					//console.log(a);
+				}
+			var file = new Blob([file_string],{type: "text/plain;charset=utf-8"});
+			var filename = "Список проголосовавших (" + post_id  + ").txt";
+			saveAs(file, filename);
+			$("#warning").html("Для продолжения обновите страницу")
+		}
+	}
 getanswersusers()
 });
-    </script>
+	</script>
 </body>
 </html>
