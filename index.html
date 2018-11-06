@@ -57,8 +57,10 @@ $("#start").click(function(){
     access_token = $('#author').val()
     console.log(access_token)
 
-VK.Api.call('wall.getById', {posts= postid, v:"5.90"}, getpostcompleted(result));
-
+VK.Api.call('wall.getById', {posts= postid, v:"5.90"}, function(r) {
+  console.log(r);
+  }
+});
 /*
   function getpost(postid){
     var post_url = "https://api.vk.com/method/wall.getById?posts="+postid+"&access_token="+access_token+"&v="+vers;
