@@ -39,7 +39,7 @@
         
     <script>
     $("#answers_form").hide();
-var access_token = ''
+//var access_token = ''
 var user_ids = new Array()
 var offset = 0
 var usersamountleft = 0
@@ -53,134 +53,151 @@ var file_string = ''
 var vers = 5.90
 var post_id = ''
 $("#start").click(function(){
-    post_id = $("#post_id").val();
-    access_token = $('#author').val()
-    console.log(access_token)
-VK.Api.call('wall.getById', {posts : post_id, v:"5.90"}, function getpostcompleted(result){
-        if(result.response.length != 0){
-            //console.log(result)
+	post_id = $("#post_id").val();
+	//access_token = $('#author').val()
+	//console.log(access_token)
+  function getpost(postid){
+    
+    VK.Api.call('wall.getById', {posts : postid, v:"5.90"}, function getpostcompleted(result));
+  }
+
+  function getpostcompleted(result){
+		if(result.response.length != 0){
+			//console.log(result)
     if (result.response[0].attachments.length != 0){
       for (var a = 0; a < result.response[0].attachments.length; a++){
         if (result.response[0].attachments[a].type == "poll"){
           var poll_object_id = a;
-                    var ispoll = 1;
-                    console.log("GetPost")
+					var ispoll = 1;
+					console.log("GetPost")
           console.log(result.response[0])
-                    console.log(poll_object_id)
+					console.log(poll_object_id)
           break;
         }
       }
       if (!ispoll){
         console.log("В посте нет опроса");
-                console.log(result.response[0].attachments[0].type)
-                $("#warning").html("В посте нет опроса, проверьте id")
-                return
+				console.log(result.response[0].attachments[0].type)
+				$("#warning").html("В посте нет опроса, проверьте id")
+				return
       } else {
-                //poll_owner = result.response[0].from_id
-                poll_owner = result.response[0].attachments[poll_object_id].poll.owner_id
-                poll_id = result.response[0].attachments[poll_object_id].poll.id
+				//poll_owner = result.response[0].from_id
+				poll_owner = result.response[0].attachments[poll_object_id].poll.owner_id
+				poll_id = result.response[0].attachments[poll_object_id].poll.id
         getpoll(poll_owner,poll_id)
       }
     } else {
       console.log("Нет вложений");
-            $("#warning").html("Пожалуйста, проверьте id поста")
+			$("#warning").html("Пожалуйста, проверьте id поста")
     }
-    } else {
-        console.log(result)
-        $("#warning").html("Пожалуйста, проверьте id поста")
-    }
-});
+	} else {
+		console.log(result)
+		$("#warning").html("Пожалуйста, проверьте id поста")
+	}
+  }
+  function getpoll(poll_owner, poll_id){
+    console.log(poll_owner);
+    console.log(poll_id);
+    console.log(access_token);
+    
 
+    VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id  v:"5.90"}, function getpollanswers(result));
 
-VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id,  v:"5.90"}, function getpollanswers(result){
-        console.log("GetPoll")
+  }
+  function getpollanswers(result){
+		console.log("GetPoll")
     //console.log(result)
-        poll_text = result.response.question;
-        for (var a = 0; a < result.response.answers.length; a++){
-            answers[a] = result.response.answers[a]
-            answers_ids[a] = result.response.answers[a].id
-            if (result.response.answers[a].votes > max_users_amount){
-                max_users_amount = result.response.answers[a].votes
-            }
-        }
-        $('#continue').before("<label>"+result.response.question+"</label><br>")
-        //console.log("answers")
-        //console.log(answers_ids.length)
-        //console.log("max amount: "+ max_users_amount)
-        //
-        for (var a = 0; a < result.response.answers.length; a++){
-            console.log("add answer");
-            $('#continue').before("<input type='checkbox' id = 'answer' name='"+answers_ids[a]+"'> "+result.response.answers[a].text+" ("+result.response.answers[a].rate+"%, "+result.response.answers[a].votes+")<br>");
-        }
-        $('#post_form').hide();
-        $('#answers_form').show();
-        console.log("answers: "+answers.length);
-        $("#warning").html("")
-    });
-
+		poll_text = result.response.question;
+		for (var a = 0; a < result.response.answers.length; a++){
+			answers[a] = result.response.answers[a]
+			answers_ids[a] = result.response.answers[a].id
+			if (result.response.answers[a].votes > max_users_amount){
+				max_users_amount = result.response.answers[a].votes
+			}
+		}
+		$('#continue').before("<label>"+result.response.question+"</label><br>")
+		//console.log("answers")
+		//console.log(answers_ids.length)
+		//console.log("max amount: "+ max_users_amount)
+		//
+		for (var a = 0; a < result.response.answers.length; a++){
+			console.log("add answer");
+			$('#continue').before("<input type='checkbox' id = 'answer' name='"+answers_ids[a]+"'> "+result.response.answers[a].text+" ("+result.response.answers[a].rate+"%, "+result.response.answers[a].votes+")<br>");
+		}
+		$('#post_form').hide();
+		$('#answers_form').show();
+		console.log("answers: "+answers.length);
+		$("#warning").html("")
+	}
 getpost(post_id);
 });
 $('#continue').click(function(){
-    var answers = new Array()
-    var answers_ids = new Array()
-    var a = 0;
-    $("input:checkbox:checked").each(function(index){
-        //answer[index] = this.attr("value");
-        answers_ids[index] = $(this).attr("name");
-        a++;
-    });
-    if (a > 0){
-        //продолжаем
-        console.log("выбрано ответов: "+answers_ids.length);
-    } else {
-        console.log("ничего не выбрано");
-        $("#warning").html("Не выбрано ни одного варианта ответа")
-        return
-    }
-    function getanswersusers(){
-        if (max_users_amount > 0){
-            var answers_split_ids = answers_ids.join();
-            VK.Api.call('polls.getVoters', {owner_id : poll_owner, poll_id : poll_id, count:1000, offset : offset, answer_ids : answers_split_ids, v:"5.90"}, addusers(result));
-        }
-    }
-    function sleep(milliseconds) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > milliseconds){
-                break;
-            }
-        }
-    }
-    function addusers(result){
-        //console.log(result)
-        for (var a = 0; a < result.response.length; a++){
-            if (!user_ids[a]){
-                user_ids[a] = new Array()
-            }
-            for (var b = 0; b < result.response[a].users.items.length; b++){
-                user_ids[a].push(result.response[a].users.items[b])
-            }
-        }
-        offset += 1000
-        max_users_amount -= 1000
-        if (max_users_amount > 0){
-            sleep(500)
-            getanswersusers()
-        } else {
-            console.log("Собрано "+user_ids.length)
-            console.log(user_ids[0])
-            for (var a = 0; a < user_ids.length; a++){
-                file_string += user_ids[a].join(";")
-                    //console.log(a);
-                }
-            var file = new Blob([file_string],{type: "text/plain;charset=utf-8"});
-            var filename = "Список проголосовавших (" + post_id  + ").txt";
-            saveAs(file, filename);
-            $("#warning").html("Для продолжения обновите страницу")
-        }
-    }
+	var answers = new Array()
+	var answers_ids = new Array()
+	var a = 0;
+	$("input:checkbox:checked").each(function(index){
+		//answer[index] = this.attr("value");
+		answers_ids[index] = $(this).attr("name");
+		a++;
+	});
+	if (a > 0){
+		//продолжаем
+		console.log("выбрано ответов: "+answers_ids.length);
+	} else {
+		console.log("ничего не выбрано");
+		$("#warning").html("Не выбрано ни одного варианта ответа")
+		return
+	}
+	function getanswersusers(){
+		if (max_users_amount > 0){
+			var answers_split_ids = answers_ids.join();
+			
+
+			VK.Api.call('polls.getVoters', {owner_id : poll_owner, poll_id : poll_id, count:1000, offset : offset, answer_ids : answers_split_ids, v:"5.90"}, addusers(result));
+
+
+
+
+		}
+	}
+	function sleep(milliseconds) {
+		var start = new Date().getTime();
+		for (var i = 0; i < 1e7; i++) {
+			if ((new Date().getTime() - start) > milliseconds){
+				break;
+			}
+		}
+	}
+	function addusers(result){
+		//console.log(result)
+		for (var a = 0; a < result.response.length; a++){
+			if (!user_ids[a]){
+				user_ids[a] = new Array()
+			}
+			for (var b = 0; b < result.response[a].users.items.length; b++){
+				user_ids[a].push(result.response[a].users.items[b])
+			}
+		}
+		offset += 1000
+		max_users_amount -= 1000
+		if (max_users_amount > 0){
+			sleep(500)
+			getanswersusers()
+		} else {
+			console.log("Собрано "+user_ids.length)
+			console.log(user_ids[0])
+			for (var a = 0; a < user_ids.length; a++){
+				file_string += user_ids[a].join(";")
+					//console.log(a);
+				}
+			var file = new Blob([file_string],{type: "text/plain;charset=utf-8"});
+			var filename = "Список проголосовавших (" + post_id  + ").txt";
+			saveAs(file, filename);
+			$("#warning").html("Для продолжения обновите страницу")
+		}
+	}
 getanswersusers()
 });
-    </script>
+	</script>
 </body>
 </html>
