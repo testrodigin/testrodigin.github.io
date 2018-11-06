@@ -57,7 +57,7 @@ $("#start").click(function(){
     access_token = $('#author').val()
     console.log(access_token)
 
-VK.Api.call('wall.getById', {posts : postid, v:"5.90"}, function(r) {
+VK.Api.call('wall.getById', {posts : post_id, v:"5.90"}, function(r) {
   console.log(r);
   });
 /*
