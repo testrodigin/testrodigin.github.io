@@ -58,7 +58,7 @@ $("#start").click(function(){
 	//console.log(access_token)
   function getpost(postid){
     
-    VK.Api.call('wall.getById', {posts : postid, v:"5.90"}, function getpostcompleted(result))
+    VK.Api.call('wall.getById', {posts : postid, v:"5.90"}, getpostcompleted(result))
   }
 
   function getpostcompleted(result){
@@ -101,7 +101,7 @@ $("#start").click(function(){
     console.log(access_token);
     
 
-    VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id  v:"5.90"}, function getpollanswers(result));
+    VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id  v:"5.90"}, getpollanswers(result));
 
   }
   function getpollanswers(result){
