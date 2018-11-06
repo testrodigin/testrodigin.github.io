@@ -98,10 +98,10 @@ $("#start").click(function(){
   function getpoll(poll_owner, poll_id){
     console.log(poll_owner);
     console.log(poll_id);
-    console.log(access_token);
+    //console.log(access_token);
     
 
-    VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id,  v:"5.90"}, getpollanswers(result));
+    VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id,  v:"5.90"}, getpollanswers);
 
   }
   function getpollanswers(result){
@@ -153,7 +153,7 @@ $('#continue').click(function(){
 			var answers_split_ids = answers_ids.join();
 			
 
-			VK.Api.call('polls.getVoters', {owner_id : poll_owner, poll_id : poll_id, count:1000, offset : offset, answer_ids : answers_split_ids, v:"5.90"}, addusers(result));
+			VK.Api.call('polls.getVoters', {owner_id : poll_owner, poll_id : poll_id, count:1000, offset : offset, answer_ids : answers_split_ids, v:"5.90"}, addusers);
 
 
 
