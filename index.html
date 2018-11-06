@@ -31,8 +31,8 @@
 <!-- VK Widget -->
 <div id="vk_auth"></div>
 <script type="text/javascript">
-  VK.Widgets.Auth("vk_auth", {"width":300,"authUrl":"https://oauth.vk.com/authorize?client_id= 6737585&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.96"});
-</script>	
+  VK.Widgets.Auth("vk_auth", {"width":400,"onAuth":"function(data) {alert('user '+data['uid']+' authorized');}"});
+</script>
 		
 		
 		
