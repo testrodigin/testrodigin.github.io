@@ -59,8 +59,7 @@ $("#start").click(function(){
 
 VK.Api.call('wall.getById', {posts : postid, v:"5.90"}, function(r) {
   console.log(r);
-  }
-});
+  });
 /*
   function getpost(postid){
     var post_url = "https://api.vk.com/method/wall.getById?posts="+postid+"&access_token="+access_token+"&v="+vers;
