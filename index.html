@@ -92,7 +92,7 @@ VK.Api.call('wall.getById', {posts : post_id, v:"5.90"}, function getpostcomplet
 });
 
 
-VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id  v:"5.90"}, function getpollanswers(result){
+VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id,  v:"5.90"}, function getpollanswers(result){
         console.log("GetPoll")
     //console.log(result)
         poll_text = result.response.question;
