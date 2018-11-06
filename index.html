@@ -58,7 +58,7 @@ $("#start").click(function(){
 	//console.log(access_token)
   function getpost(postid){
     
-    VK.Api.call('wall.getById', {posts : postid, v:"5.90"}, getpostcompleted(result))
+    VK.Api.call('wall.getById', {posts : postid, v:"5.90"}, getpostcompleted)
   }
 
   function getpostcompleted(result){
