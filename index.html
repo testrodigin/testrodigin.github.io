@@ -56,21 +56,7 @@ $("#start").click(function(){
     post_id = $("#post_id").val();
     access_token = $('#author').val()
     console.log(access_token)
-
-VK.Api.call('wall.getById', {posts : post_id, v:"5.90"}, function(r) {
-  console.log(r);
-  });
-/*
-  function getpost(postid){
-    var post_url = "https://api.vk.com/method/wall.getById?posts="+postid+"&access_token="+access_token+"&v="+vers;
-    return $.ajax({
-    url : post_url,
-    type : "GET",
-    dataType : "jsonp",
-    success : getpostcompleted
-    });
-  } */
-  function getpostcompleted(result){
+VK.Api.call('wall.getById', {posts : post_id, v:"5.90"}, function getpostcompleted(result){
         if(result.response.length != 0){
             //console.log(result)
     if (result.response[0].attachments.length != 0){
@@ -103,20 +89,10 @@ VK.Api.call('wall.getById', {posts : post_id, v:"5.90"}, function(r) {
         console.log(result)
         $("#warning").html("Пожалуйста, проверьте id поста")
     }
-  }
-  function getpoll(poll_owner, poll_id){
-    console.log(poll_owner);
-    console.log(poll_id);
-    console.log(access_token);
-    var poll_url = "https://api.vk.com/method/polls.getById?owner_id="+poll_owner+"&poll_id="+poll_id+"&access_token="+access_token+"&v="+vers;
-    return $.ajax({
-    url : poll_url,
-    type : "GET",
-    dataType : "jsonp",
-    success : getpollanswers
-    });
-  }
-  function getpollanswers(result){
+});
+
+
+VK.Api.call('polls.getById', {owner_id : poll_owner, poll_id : poll_id  v:"5.90"}, function getpollanswers(result){
         console.log("GetPoll")
     //console.log(result)
         poll_text = result.response.question;
@@ -140,7 +116,8 @@ VK.Api.call('wall.getById', {posts : post_id, v:"5.90"}, function(r) {
         $('#answers_form').show();
         console.log("answers: "+answers.length);
         $("#warning").html("")
-    }
+    });
+
 getpost(post_id);
 });
 $('#continue').click(function(){
@@ -163,13 +140,7 @@ $('#continue').click(function(){
     function getanswersusers(){
         if (max_users_amount > 0){
             var answers_split_ids = answers_ids.join();
-            var poll_users_url = "https://api.vk.com/method/polls.getVoters?owner_id="+poll_owner+"&poll_id="+poll_id+"&count=1000&offset="+offset+"&answer_ids="+answers_split_ids+"&access_token="+access_token+"&v="+vers;
-            return $.ajax({
-        url : poll_users_url,
-        type : "GET",
-        dataType : "jsonp",
-        success : addusers
-        });
+            VK.Api.call('polls.getVoters', {owner_id : poll_owner, poll_id : poll_id, count:1000, offset : offset, answer_ids : answers_split_ids, v:"5.90"}, addusers(result));
         }
     }
     function sleep(milliseconds) {
