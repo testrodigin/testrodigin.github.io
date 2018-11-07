@@ -21,7 +21,7 @@
 		function funonload() {
 		  	VK.Auth.getLoginStatus(isauth)
 			function isauth(result){
-				if(result.response.status = "connected"){
+				if(result.status = "connected"){
 					$('#login').hide();
 				}
 	
