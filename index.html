@@ -169,7 +169,7 @@
 				$('#continue').before("<label>"+result.response.question+"</label><br>")
 				for (var a = 0; a < result.response.answers.length; a++){
 					console.log("add answer");
-					$('#continue').before("<input type='checkbox' id = 'answer' name='"+answers_ids[a]+"'> "+result.response.answers[a].text+" ("+result.response.answers[a].rate+"%, "+result.response.answers[a].votes+")<br>");
+					$('#continue').before("<label><input type='checkbox' id = 'answer' name='"+answers_ids[a]+"'> "+result.response.answers[a].text+" ("+result.response.answers[a].rate+"%, "+result.response.answers[a].votes+")<br></label>");
 				}
 				$('#post_form').hide();
 				$('#answers_form').show();
