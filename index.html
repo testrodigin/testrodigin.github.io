@@ -187,7 +187,7 @@
 				console.log("выбрано ответов: "+answers_ids.length);
 			} else {
 				console.log("ничего не выбрано");
-				$("#warning").html("Не выбрано ни одного варианта ответа")
+				$("#warning2").html("Не выбрано ни одного варианта ответа")
 				return
 			}
 			function getanswersusers(){
@@ -229,7 +229,7 @@
 					var file = new Blob([file_string],{type: "text/plain;charset=utf-8"});
 					var filename = "Список проголосовавших (" + post_id  + ").txt";
 					saveAs(file, filename);
-					$("#warning").html("Для продолжения обновите страницу")
+					$("#warning2").html("Для продолжения обновите страницу")
 				}
 			}
 		getanswersusers()
