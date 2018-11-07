@@ -22,10 +22,7 @@
 		  	VK.Auth.getLoginStatus(isauth)
 			function isauth(result){
 				if(result.status = "connected"){
-					//$('#login').hide();
-					//document.getElementById(login).innerHTML = 'Lock';
-					$("#login span").text("My NEW Text");
-					//$("#login").prop('value', 'Выйти');
+					$('#login').hide();
 				}
 			
 	
@@ -40,6 +37,7 @@
     	<div class="row">
     		<div class="col-xs-12 vertical-center">
     			<div class="jumbotron">
+				<button class="btn btn-primary btn-lg" id="login">Войти</button>
     				<div class="text-center">
     					<a href="https://vk.com" target="_blank" style="border-bottom: 0;">
     						<i class="fa fa-vk logo"></i>
@@ -53,7 +51,6 @@
     							
     						</div>
     						<div class="form-group">
-							<button class="btn btn-primary btn-lg" id="login">Войти</button>
     							<div class="input-group input-group-lg"> 
     								<span class="input-group-addon">ID
     								</span> 
