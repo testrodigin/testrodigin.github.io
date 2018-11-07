@@ -23,7 +23,8 @@
 			function isauth(result){
 				if(result.status = "connected"){
 					//$('#login').hide();
-					$("#login").prop('value', 'Выйти');
+					document.getElementById(login).innerHTML = 'Lock';
+					//$("#login").prop('value', 'Выйти');
 				}
 			
 	
